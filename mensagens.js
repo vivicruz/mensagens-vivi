@@ -238,12 +238,14 @@ const mensagens = [
 "... que a vida te abrace com infinitas possibilidades."
 ];
 
-
 // Função para mostrar mensagem aleatória
 function mostrarMensagem() {
     const index = Math.floor(Math.random() * mensagens.length);
     const texto = mensagens[index];
     document.getElementById("mensagem").textContent = texto;
+
+    // Agora, chamar a função lerMensagem automaticamente
+    lerMensagem();
 }
 
 // Função para ler a mensagem
@@ -269,3 +271,4 @@ document.getElementById("btn-mensagem").addEventListener("click", () => {
 document.getElementById("btn-ouvir").addEventListener("click", () => {
     lerMensagem();
 });
+
