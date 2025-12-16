@@ -237,3 +237,35 @@ const mensagens = [
 
 "... que a vida te abrace com infinitas possibilidades."
 ];
+
+
+// Função para mostrar mensagem aleatória
+function mostrarMensagem() {
+    const index = Math.floor(Math.random() * mensagens.length);
+    const texto = mensagens[index];
+    document.getElementById("mensagem").textContent = texto;
+}
+
+// Função para ler a mensagem
+function lerMensagem() {
+    const texto = document.getElementById("mensagem").textContent;
+    if (!texto || texto === "...") return;
+
+    // Cancelar fala anterior caso esteja falando
+    speechSynthesis.cancel();
+
+    const fala = new SpeechSynthesisUtterance(texto);
+    fala.lang = "pt-BR"; // idioma
+    fala.rate = 1;       // velocidade
+    fala.pitch = 1;      // tom
+    speechSynthesis.speak(fala);
+}
+
+// Eventos para os botões
+document.getElementById("btn-mensagem").addEventListener("click", () => {
+    mostrarMensagem();
+});
+
+document.getElementById("btn-ouvir").addEventListener("click", () => {
+    lerMensagem();
+});
